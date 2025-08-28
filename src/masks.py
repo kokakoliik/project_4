@@ -10,8 +10,9 @@ def get_mask_card_number(card_number: Union[str | int]) -> str:
     if len(card_number_str) != 16:
         raise ValueError("Ошибка: Номер карты должен содержать 16 цифр.")
 
-    mask_card = f"{card_number_str[:6]}******{card_number_str[-4:]}"
-    return " ".join(mask_card[i : i + 4] for i in range(0, len(mask_card), 4))
+    masked_card = f"{card_number_str[:6]}******{card_number_str[-4:]}"
+    mask_card = " ".join(masked_card[i : i + 4] for i in range(0, len(masked_card), 4))
+    return mask_card
 
 
 def get_mask_account(account_number: Union[str | int]) -> str:
