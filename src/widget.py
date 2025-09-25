@@ -14,7 +14,7 @@ def mask_account_card(input_string: str) -> str:
             masked_number = "**" + input_string[-4:]
         elif len(card_number_str) == 16:
             masked_card = f"{input_string[-16:-10]}******{input_string[-4:]}"
-            masked_number = " ".join(masked_card[i:i + 4] for i in range(0, len(masked_card), 4))
+            masked_number = " ".join(masked_card[i : i + 4] for i in range(0, len(masked_card), 4))
         else:
             raise ValueError("Неверный формат номера счета или карты")
         return f"{card_type} {masked_number}"
