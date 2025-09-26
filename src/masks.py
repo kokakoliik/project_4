@@ -3,7 +3,7 @@ from typing import Union
 
 def get_mask_card_number(card_number: Union[str | int]) -> str:
     """
-    Маскирует номер карты, показывая первые 6 цифр и последние 4 цифры
+    Маскирует номер карты,  показывая первые 6 цифр и последние 4 цифры
     """
     card_number_str = str(card_number)
 
