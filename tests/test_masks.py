@@ -30,7 +30,7 @@ def test_get_mask_account(masks_account_number: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "input_account,expected_1",
+    "input_account,expected",
     [
         ("40817810099910004312", "**4312"),  # стандартный
         ("4081 7810 0999 1000 4312", "**4312"),
