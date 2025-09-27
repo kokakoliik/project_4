@@ -1,61 +1,64 @@
 from datetime import datetime
+from typing import Optional
 
 
-def mask_account_card(data):
+def mask_account_card(data: Optional[str]) -> str:
     """
-    Маскирует номер карты или счета без использования модуля re.
-
-    - Для счета (например, "Счет 1234567890123456"):
-        возвращает: "Счет **3456"
-    - Для карты (например, "Visa 1234567890123456"):
-        возвращает: "Visa 1234 56** **** 3456"
-    - При неправильных данных возвращает: "Ошибка: Введен некорректный номер карты/счета"
+    Маскирует номер карты или счета
     """
     if not isinstance(data, str):
         return "Ошибка: Введен некорректный номер карты/счета"
-
     data = data.strip()
     # Разделяем строку по первому пробелу
-    parts = data.split(' ', 1)
+    parts = data.split(" ", 1)
+
+    card_name = ["visa", "mastercard", "american express", "jcb", "unionpay", "мир"]
 
     if len(parts) == 2:
         prefix, number_part = parts
     else:
-        # В случае отсутствия пробела, предполагаем, что либо нет типа, либо неправильный формат
         prefix, number_part = parts[0], ""
 
-    # Удаляем все пробелы внутри номера
     number = "".join(number_part.split())
 
-    # Проверка длинны и содержимого номера
-    if not number.isdigit() or len(number) != 16:
+    if not number.isdigit():
         return "Ошибка: Введен некорректный номер карты/счета"
-
-    # Маскировка
-    if prefix.lower() == "счет":
+    elif len(number) == 20 and prefix.lower() == "счет":
         return f"{prefix} **{number[-4:]}"
-    elif prefix:
-        # Карта с названием
+    elif len(number) == 16 and prefix.lower() in card_name:
         return f"{prefix} {number[:4]} {number[4:6]}** **** {number[-4:]}"
     else:
-        # Нет названия - просто маска номера
-        return f"{number[:4]} {number[4:6]}** **** {number[-4:]}"
+        return "Ошибка: Введен некорректный номер карты/счета"
 
 
-def get_date(input_string: str) -> str:
-    """
-    Преобразует строку с датой в формате 'YYYY-MM-DDTHH:MM:SS.ssssss' в формат 'DD.MM.YYYY'.
-    Если дата некорректна, возвращает: "Ошибка: Неверная дата"
-    """
-    input_string = input_string.strip()
-
+def get_date(input_string: Optional[str]) -> Optional[str]:
     if not input_string:
-        return ""
+        return None
 
+    input_str = input_string.strip()
+
+    # Попытка парсинга ISO формата (с временем и без)
     try:
-        # Убираем часть времени, чтобы парсить только дату
-        date_str = input_string[:-7]
-        date_object = datetime.fromisoformat(date_str)
+        # Если строка содержит пробел, берем только первую часть (дату)
+        date_part = input_str.split()[0]
+        date_object = datetime.fromisoformat(date_part)
+        return date_object.strftime("%d.%m.%Y")
+    except (ValueError, IndexError):
+        pass
+
+    # Попытка распарсить в формате 'DD.MM.YYYY'
+    try:
+        date_object = datetime.strptime(input_str, "%d.%m.%Y")
         return date_object.strftime("%d.%m.%Y")
     except ValueError:
-        return "Ошибка: Неверная дата"
+        pass
+
+    # Попытка распарсить в формате 'April 15, 2023'
+    try:
+        date_object = datetime.strptime(input_str, "%B %d, %Y")
+        return date_object.strftime("%d.%m.%Y")
+    except ValueError:
+        pass
+
+    # Если ничего не подошло
+    return None
