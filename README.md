@@ -25,7 +25,7 @@
 
 1. Склонируйте репозиторий:
    ```bash
-   https://github.com/kokakoliik/progect4.git
+   https://github.com/kokakoliik/project_4
    
 ## Использование
 
