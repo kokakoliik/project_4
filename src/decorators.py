@@ -1,56 +1,72 @@
-import logging
-import os
-import functools
-from typing import Callable, Optional, TypeVar, ParamSpec
-from datetime import datetime
+import datetime
+from typing import Any, Callable, Optional, TypeVar, cast
+
+T = TypeVar("T")
 
 
-# Настройка логирования
-def setup_logger(filename: Optional[str] = None) -> logging.Logger:
-    logger = logging.getLogger("my_logger")
-    logger.setLevel(logging.DEBUG)
-    formatter = logging.Formatter("%(asctime)s - %(message)s")
-
-    if filename is not None:
-        log_file = os.path.join("logs", filename)
-        os.makedirs(os.path.dirname(log_file), exist_ok=True)  # Создание папки, если не существует
-        file_handler = logging.FileHandler(log_file)
-        file_handler.setFormatter(formatter)
-        logger.addHandler(file_handler)
-    else:
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(formatter)
-        logger.addHandler(console_handler)
-
-    return logger
-
-
-P = ParamSpec('P')
-R = TypeVar('R')
-
-
-def log(filename: Optional[str] = None) -> Callable[[Callable[P, R]], Callable[P, R]]:
+def log(filename: Optional[str] = None) -> Callable[[Callable[..., T]], Callable[..., T]]:
     """
-    Декоратор для логирования вызовов функции.
-    """
-    logger = setup_logger(filename)  # Предполагается, что setup_logger определена где-то
+    Декоратор для логирования начала и конца выполнения функции,
+    а также результатов или ошибок.
 
-    def decorator(func: Callable[P, R]) -> Callable[P, R]:
-        @functools.wraps(func)
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
-            function_name = func.__name__
-            start_time = datetime.now()
-            logger.info(f"{function_name} called at {start_time.isoformat()} with args: {args} and kwargs: {kwargs}")
+    Args:
+        filename: Путь к файлу для записи логов. Если None - вывод в консоль.
+    """
+
+    def decorator(func: Callable[..., T]) -> Callable[..., T]:
+        def wrapper(*args: Any, **kwargs: Any) -> T:
+            # Формируем строку с входными параметрами
+            args_str = ", ".join([repr(arg) for arg in args])
+            kwargs_str = ", ".join([f"{key}={repr(value)}" for key, value in kwargs.items()])
+            params_str = ", ".join(filter(None, [args_str, kwargs_str]))
+
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            start_message = f"{timestamp} - {func.__name__} started with params: ({params_str})"
+
+            # Логируем начало выполнения
+            write_log(start_message, filename)
 
             try:
+                # Выполняем функцию
                 result = func(*args, **kwargs)
-                logger.info(f"{function_name} result: {result}")
-                return result
-            except Exception as e:
-                error_message = f"{function_name} error: {type(e).__name__}. Inputs: {args}, {kwargs}"
-                logger.error(error_message)
-                raise
 
-        return wrapper
+                # Логируем успешное завершение
+                end_message = f"{timestamp} - {func.__name__} finished. Result: {result}"
+                write_log(end_message, filename)
+
+                return result
+
+            except Exception as e:
+                # Логируем ошибку
+                error_message = (
+                    f"{timestamp} - {func.__name__} failed with error: {type(e).__name__}: {e}. "
+                    f"Params: ({params_str})"
+                )
+                write_log(error_message, filename)
+                raise  # Пробрасываем исключение дальше
+
+        # Вручную копируем метаданные функции вместо использования functools.wraps
+        wrapper.__name__ = func.__name__
+        wrapper.__doc__ = func.__doc__
+        wrapper.__module__ = func.__module__
+        wrapper.__qualname__ = func.__qualname__
+        wrapper.__annotations__ = func.__annotations__
+
+        return cast(Callable[..., T], wrapper)
 
     return decorator
+
+
+def write_log(message: str, filename: Optional[str] = None) -> None:
+    """
+    Вспомогательная функция для записи лога в файл или консоль.
+
+    Args:
+        message: Сообщение для записи
+        filename: Путь к файлу или None для вывода в консоль
+    """
+    if filename:
+        with open(filename, "a", encoding="utf-8") as file:
+            file.write(message + "\n")
+    else:
+        print(message)
