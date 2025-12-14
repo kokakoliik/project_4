@@ -11,7 +11,7 @@ logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)
 
 # Создание обработчика для записи логов в файл
-file_handler = logging.FileHandler("../tests/logs/masks.log", mode="w")
+file_handler = logging.FileHandler("../logs/masks.log", mode="w")
 file_handler.setLevel(logging.DEBUG)
 
 # Форматирование логов

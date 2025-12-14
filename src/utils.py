@@ -11,7 +11,7 @@ logger = logging.getLogger("utils")
 logger.setLevel(logging.DEBUG)
 
 
-file_handler = logging.FileHandler("logs/utils.log", mode="w")
+file_handler = logging.FileHandler("../logs/utils.log", mode="w")
 file_handler.setLevel(logging.DEBUG)
 
 
