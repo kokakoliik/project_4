@@ -1,24 +1,92 @@
-2025-10-13 18:08:37,954 - successful_function called at 2025-10-13T18:08:37.954693 with args: (1, 2) and kwargs: {}
-2025-10-13 18:08:37,954 - successful_function called at 2025-10-13T18:08:37.954693 with args: (1, 2) and kwargs: {}
-2025-10-13 18:08:37,955 - successful_function result: 3
-2025-10-13 18:08:37,955 - successful_function result: 3
-2025-10-13 18:08:37,958 - error_function called at 2025-10-13T18:08:37.958571 with args: (1, 0) and kwargs: {}
-2025-10-13 18:08:37,958 - error_function called at 2025-10-13T18:08:37.958571 with args: (1, 0) and kwargs: {}
-2025-10-13 18:08:37,958 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
-2025-10-13 18:08:37,958 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
-2025-10-13 18:08:44,958 - successful_function called at 2025-10-13T18:08:44.958649 with args: (1, 2) and kwargs: {}
-2025-10-13 18:08:44,958 - successful_function called at 2025-10-13T18:08:44.958649 with args: (1, 2) and kwargs: {}
-2025-10-13 18:08:44,958 - successful_function result: 3
-2025-10-13 18:08:44,958 - successful_function result: 3
-2025-10-13 18:08:44,961 - error_function called at 2025-10-13T18:08:44.961302 with args: (1, 0) and kwargs: {}
-2025-10-13 18:08:44,961 - error_function called at 2025-10-13T18:08:44.961302 with args: (1, 0) and kwargs: {}
-2025-10-13 18:08:44,961 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
-2025-10-13 18:08:44,961 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
-2025-10-13 18:40:23,898 - successful_function called at 2025-10-13T18:40:23.898779 with args: (1, 2) and kwargs: {}
-2025-10-13 18:40:23,898 - successful_function called at 2025-10-13T18:40:23.898779 with args: (1, 2) and kwargs: {}
-2025-10-13 18:40:23,899 - successful_function result: 3
-2025-10-13 18:40:23,899 - successful_function result: 3
-2025-10-13 18:40:23,901 - error_function called at 2025-10-13T18:40:23.901920 with args: (1, 0) and kwargs: {}
-2025-10-13 18:40:23,901 - error_function called at 2025-10-13T18:40:23.901920 with args: (1, 0) and kwargs: {}
-2025-10-13 18:40:23,902 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
-2025-10-13 18:40:23,902 - error_function error: ZeroDivisionError. Inputs: (1, 0), {}
+2025-12-07 11:41:50 - successful_function started with params: (1, 2)
+2025-12-07 11:41:50 - successful_function finished. Result: 3
+2025-12-07 11:41:50 - error_function started with params: (1, 0)
+2025-12-07 11:41:50 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:40:31 - successful_function started with params: (1, 2)
+2025-12-08 17:40:31 - successful_function finished. Result: 3
+2025-12-08 17:40:31 - error_function started with params: (1, 0)
+2025-12-08 17:40:31 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:41:19 - successful_function started with params: (1, 2)
+2025-12-08 17:41:19 - successful_function finished. Result: 3
+2025-12-08 17:41:19 - error_function started with params: (1, 0)
+2025-12-08 17:41:19 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:43:21 - successful_function started with params: (1, 2)
+2025-12-08 17:43:21 - successful_function finished. Result: 3
+2025-12-08 17:43:21 - error_function started with params: (1, 0)
+2025-12-08 17:43:21 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:43:42 - successful_function started with params: (1, 2)
+2025-12-08 17:43:42 - successful_function finished. Result: 3
+2025-12-08 17:43:42 - error_function started with params: (1, 0)
+2025-12-08 17:43:42 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:44:04 - successful_function started with params: (1, 2)
+2025-12-08 17:44:04 - successful_function finished. Result: 3
+2025-12-08 17:44:04 - error_function started with params: (1, 0)
+2025-12-08 17:44:04 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:44:13 - successful_function started with params: (1, 2)
+2025-12-08 17:44:13 - successful_function finished. Result: 3
+2025-12-08 17:44:13 - error_function started with params: (1, 0)
+2025-12-08 17:44:13 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:50:33 - successful_function started with params: (1, 2)
+2025-12-08 17:50:33 - successful_function finished. Result: 3
+2025-12-08 17:50:33 - error_function started with params: (1, 0)
+2025-12-08 17:50:33 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:51:49 - successful_function started with params: (1, 2)
+2025-12-08 17:51:49 - successful_function finished. Result: 3
+2025-12-08 17:51:49 - error_function started with params: (1, 0)
+2025-12-08 17:51:49 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:52:13 - successful_function started with params: (1, 2)
+2025-12-08 17:52:13 - successful_function finished. Result: 3
+2025-12-08 17:52:13 - error_function started with params: (1, 0)
+2025-12-08 17:52:13 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:53:36 - successful_function started with params: (1, 2)
+2025-12-08 17:53:36 - successful_function finished. Result: 3
+2025-12-08 17:53:36 - error_function started with params: (1, 0)
+2025-12-08 17:53:36 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:53:54 - successful_function started with params: (1, 2)
+2025-12-08 17:53:54 - successful_function finished. Result: 3
+2025-12-08 17:53:54 - error_function started with params: (1, 0)
+2025-12-08 17:53:54 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:54:53 - successful_function started with params: (1, 2)
+2025-12-08 17:54:53 - successful_function finished. Result: 3
+2025-12-08 17:54:53 - error_function started with params: (1, 0)
+2025-12-08 17:54:53 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:56:03 - successful_function started with params: (1, 2)
+2025-12-08 17:56:03 - successful_function finished. Result: 3
+2025-12-08 17:56:03 - error_function started with params: (1, 0)
+2025-12-08 17:56:03 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 17:56:38 - successful_function started with params: (1, 2)
+2025-12-08 17:56:38 - successful_function finished. Result: 3
+2025-12-08 17:56:38 - error_function started with params: (1, 0)
+2025-12-08 17:56:38 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 18:01:18 - successful_function started with params: (1, 2)
+2025-12-08 18:01:18 - successful_function finished. Result: 3
+2025-12-08 18:01:18 - error_function started with params: (1, 0)
+2025-12-08 18:01:18 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 18:09:54 - successful_function started with params: (1, 2)
+2025-12-08 18:09:54 - successful_function finished. Result: 3
+2025-12-08 18:09:54 - error_function started with params: (1, 0)
+2025-12-08 18:09:54 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 18:11:46 - successful_function started with params: (1, 2)
+2025-12-08 18:11:46 - successful_function finished. Result: 3
+2025-12-08 18:11:46 - error_function started with params: (1, 0)
+2025-12-08 18:11:46 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 18:14:35 - successful_function started with params: (1, 2)
+2025-12-08 18:14:35 - successful_function finished. Result: 3
+2025-12-08 18:14:35 - error_function started with params: (1, 0)
+2025-12-08 18:14:35 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-08 19:08:00 - successful_function started with params: (1, 2)
+2025-12-08 19:08:00 - successful_function finished. Result: 3
+2025-12-08 19:08:00 - error_function started with params: (1, 0)
+2025-12-08 19:08:00 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-14 19:43:10 - successful_function started with params: (1, 2)
+2025-12-14 19:43:10 - successful_function finished. Result: 3
+2025-12-14 19:43:10 - error_function started with params: (1, 0)
+2025-12-14 19:43:10 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-14 19:47:48 - successful_function started with params: (1, 2)
+2025-12-14 19:47:48 - successful_function finished. Result: 3
+2025-12-14 19:47:48 - error_function started with params: (1, 0)
+2025-12-14 19:47:48 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
+2025-12-14 19:49:37 - successful_function started with params: (1, 2)
+2025-12-14 19:49:37 - successful_function finished. Result: 3
+2025-12-14 19:49:37 - error_function started with params: (1, 0)
+2025-12-14 19:49:37 - error_function failed with error: ZeroDivisionError: division by zero. Params: (1, 0)
