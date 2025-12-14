@@ -1,4 +1,5 @@
-from typing import Any, Dict, List
+import os
+from typing import Any, Dict, Generator, List
 
 import pytest
 
@@ -81,3 +82,11 @@ def transactions() -> List[Dict[str, Any]]:
             "to": "Счет 14211924144426031657",
         },
     ]
+
+
+@pytest.fixture(autouse=True)
+def clear_log_file() -> Generator[None, None, None]:
+    log_path = "logs/mylog.txt"
+    if os.path.exists(log_path):
+        os.remove(log_path)
+    yield
