@@ -86,7 +86,7 @@ def transactions() -> List[Dict[str, Any]]:
 
 @pytest.fixture(autouse=True)
 def clear_log_file() -> Generator[None, None, None]:
-    log_path = "logs/mylog.txt"
+    log_path = "../logs/logs/mylog.txt"
     if os.path.exists(log_path):
         os.remove(log_path)
     yield
