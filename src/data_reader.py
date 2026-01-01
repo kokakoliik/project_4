@@ -23,7 +23,7 @@ def read_transactions_from_csv(file_path: str) -> List[Dict]:
         logger.error(f"Файл {file_path} не найден.")
         raise FileNotFoundError(f"Файл {file_path} не найден.")
     try:
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, sep=";")
         transactions = df.to_dict(orient="records")
         logger.info(f"Успешно считано {len(transactions)} транзакций из файла: {file_path}")
         return transactions
